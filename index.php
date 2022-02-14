@@ -30,7 +30,13 @@ h5.has-subhead{margin-bottom:0}
 <body>
 <div class="container">
 
-<?php include 'config.php'; ?>
+<?php 
+if( strpos($_SERVER['SERVER_NAME'], "stage") === false ){
+	include 'live-config.php'; 
+} else {
+	include 'config.php'; 
+}
+?>
 
 
 <!--  ----------------------------------------------------------------------  -->
@@ -47,7 +53,7 @@ h5.has-subhead{margin-bottom:0}
 	<div class="row">
 		<form id="myForm" action="<?php echo $formAction; ?>" method="POST" class="col s12">
 			<input type=hidden name="oid" value="<?php echo $oidValue; ?>">
-			<input type=hidden name="retURL" value="https://stage.fujioihreservation.com/thank-you.html">
+			<input type=hidden name="retURL" value="<?php echo $retURL; ?>">
 			<h1 class="has-subhead">来訪申込</h1>
 			<p class="subhead-h1">Open Innovation Hub</p>
 			
